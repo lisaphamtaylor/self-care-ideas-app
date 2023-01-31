@@ -20,6 +20,221 @@
     {
         "suggestion": "write a to-do list and number the items in terms of priority",
         "category": ["mental"]
-
-    }
+    },
+    {
+        "suggestion": "do some stretches",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "take a nap",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "eat a snack",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "do some yoga",
+        "category": ["physical", "sensory", "emotional", "spiritual"]
+    },
+    {
+        "suggestion": "drink a glass of water",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "go for a hike",
+        "category": ["physical"]
+    },
+    {
+        "suggestion": "go to bed early tonight",
+        "category": ["physical"]
+    },
+    {
+        "suggestion": "take a bath",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "close your eyes and take 5 intentional breaths--paying attention to the sensation of the breath in your body",
+        "category": ["sensory"]
+    },
+    {
+        "suggestion": "go outside and connect with nature",
+        "category": ["physical", "sensory"]
+    },
+    {
+        "suggestion": "put on a face mask and have a little DIY spa pampering",
+        "category": ["sensory"]
+    },
+    {
+        "suggestion": "light a candle with a pleasant scent",
+        "category": ["sensory"]
+    },
+    {
+        "suggestion": "get a message",
+        "category": ["sensory"]
+    },
+    {
+        "suggestion": "go stargazing",
+        "category": ["pleasure", "sensory"]
+    },
+    {
+        "suggestion": "take a long shower and put on clothes that make you feel good",
+        "category": ["mental", "sensory"]
+    },
+    {
+        "suggestion": "sit in a coffee shop or on a park bench and people watch",
+        "category": ["sensory", "mental", "social"]
+    },
+    {
+        "suggestion": "sing at the top of your lungs",
+        "category": ["sensory","pleasure"]
+    },
+    {
+        "suggestion": "indulge in a special treat--latte, chocolate bar, etc",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "set aside time to indulge in a hobby",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "put on a favorite song and dance your heart out",
+        "category": ["pleasure","physical"]
+    },
+    {
+        "suggestion": "put on a favorite song and have an impromptu karaoke or lip syncing session",
+        "category": ["pleasure", "physical"]
+    },
+    {
+        "suggestion": "watch a move or show you've been meaning to get to",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "read a book",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "journal",
+        "category": ["physical", "spiritual", "mental", "emotional"]
+    },
+    {
+        "suggestion": "put together a motivational playlist",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "watch funny pet videos",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "choose a book to reach that's easy and fun, then pass it on to a friend to read",
+        "category": ["pleasure", "social"]
+    },
+    {
+        "suggestion": "do 1 thing today just because it makes you happy",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "buy yourself some flowers or a new plant",
+        "category": ["pleasure","mental"]
+    },
+    {
+        "suggestion": "eat your favorite comfort food",
+        "category": ["physical","pleasure", "sensory"]
+    },
+    {
+        "suggestion": "make a blanket fort and watch your favorite show inside with your favorite snacks",
+        "category": ["pleasure"]
+    },
+    {
+        "suggestion": "write down your feelings",
+        "category": ["emotional"]
+    },
+    {
+        "suggestion": "set an intention for the day and write it down somewhere you can reference it throughout your day",
+        "category": ["spiritual"]
+    },
+    {
+        "suggestion": "list 5 things you're grateful for",
+        "category": ["spiritual"]
+    },
+    {
+        "suggestion": "read poetry or inspiring quotes that move you",
+        "category": ["spiritual"]
+    },
+    {
+        "suggestion": "write a postcard or letter to send to a loved one",
+        "category": ["social"]
+    },
+    {
+        "suggestion": "hug a loved one or cherished pet",
+        "category": ["social", "sensory", "physical"]
+    },
+    {
+        "suggestion": "plan something fun for the upcoming weekend",
+        "category": ["social", "pleasure"
+    },
+    {
+        "suggestion": "plan a night with loved ones",
+        "category": ["social"]
+    },
+    {
+        "suggestion": "look at old photographs from good memories",
+        "category": ["social"]
+    },
+    {
+        "suggestion": "carry out one act of kindness for a stranger today",
+        "category": ["social"]
+    },
+    {
+        "suggestion": "call a loved one to catch up",
+        "category": ["social"]
+    },
+    {
+        "suggestion": "write down an affirmation and put it on your bathroom mirror",
+        "category": ["mental","emotional"]
+    },
+    {
+        "suggestion": "think about something you accomplished that you're proud of and how your talents helped you succeed",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "think of a time when you have been resourceful",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "paint your nails",
+        "category": ["sensory","pleasure", "mental"]
+    },
+    {
+        "suggestion": "immerse yourself in a puzzle",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "clean up one small corner of your house",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "complete a chore you've been putting off",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "unplug from email and social media for 1 hour",
+        "category": ["mental", "emotional", "sensory"]
+    },
+    {
+        "suggestion": "put your phone on Do Not Disturb and unplug for 1 hour",
+        "category": ["mental", "emotional", "sensory"]
+    },
+    {
+        "suggestion": "unfollow or mute social media accounts that give you anxiety",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "listen to a podcast on a topic that intrigues you--bonus if you combine it with a walk or a bath",
+        "category": ["mental"]
+    },
+    {
+        "suggestion": "sit outside and set a timer--close your eyes and tunr into the sounds around you and the feeling of the sun or wind",
+        "category": ["mental", "spiritual", "sensory"]
+    },
 ]
