@@ -1,6 +1,14 @@
 import React from 'react';
-import { FlatList, Pressable, SafeAreaView, Text, View } from 'react-native';
+import {
+  Button,
+  FlatList,
+  Pressable,
+  SafeAreaView,
+  Text,
+  View,
+} from 'react-native';
 import { globalStyles } from '../styles/global';
+import CategoryButton from '../components/CategoryButton';
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
@@ -15,7 +23,7 @@ export default function FilterScreen({ navigation }) {
   ];
 
   const pressHandler = (category) => {
-    navigation.navigate('Suggestions', { categoryKey: category });
+    navigation.navigate('Suggestions', { chosenCategory: category });
   };
 
   return (
@@ -24,14 +32,15 @@ export default function FilterScreen({ navigation }) {
       <FlatList
         data={CATEGORIES}
         renderItem={({ item }) => (
-          <View style={globalStyles.pressableButtonContainer}>
-            <Pressable
-              onPress={() => pressHandler(item.name)}
-              style={globalStyles.pressableButton}
-            >
-              <Text style={globalStyles.titleText}>{item.name}</Text>
-            </Pressable>
-          </View>
+          // <View style={globalStyles.pressableButtonContainer}>
+          //   <Pressable
+          //     onPress={() => pressHandler(item.name)}
+          //     style={globalStyles.pressableButton}
+          //   >
+          //     <Text style={globalStyles.titleText}>{item.name}</Text>
+          //   </Pressable>
+          // </View>
+          <CategoryButton item={item} pressHandler={pressHandler} />
         )}
       />
     </SafeAreaView>

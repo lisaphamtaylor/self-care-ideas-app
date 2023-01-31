@@ -1,10 +1,10 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 
-export default function ButtonCategory(props) {
+export default function ButtonCategory({ category, pressHandler }) {
   return (
     <View style={styles.buttonContainer}>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>{props.category}</Text>
+      <Pressable style={styles.button} onPress={pressHandler}>
+        <Text style={styles.buttonText}>{category}</Text>
       </Pressable>
     </View>
   );
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // flexDirection: 'row',
-    width: '30%',
-    height: '30%',
+    // width: '30%',
+    // height: '30%',
   },
   button: {},
   buttonText: {

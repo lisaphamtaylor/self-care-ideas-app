@@ -1,11 +1,12 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import FilterScreen from './screens/FilterScreen';
 import { NavigationContainer } from '@react-navigation/native';
-
-import SuggestionScreen from './screens/SuggestionScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// importing screens for App
+import FilterScreen from './screens/FilterScreen';
+import SuggestionScreen from './screens/SuggestionScreen';
+
+// initializing Stack
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -26,5 +27,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({});
