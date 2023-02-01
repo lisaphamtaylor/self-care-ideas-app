@@ -14,11 +14,11 @@ export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
     { name: 'physical', key: 1 },
     { name: 'emotional', key: 2 },
-    { name: 'mentally-fit', key: 3 },
+    { name: 'mental', key: 3 },
     { name: 'social', key: 4 },
     { name: 'spiritual', key: 5 },
     { name: 'sensory', key: 6 },
-    { name: 'fun', key: 7 },
+    { name: 'pleasure', key: 7 },
     { name: 'random', key: 8 },
   ];
 

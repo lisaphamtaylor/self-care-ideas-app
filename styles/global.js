@@ -4,6 +4,7 @@ export const globalStyles = StyleSheet.create({
   container: {
     padding: 24,
     flex: 1,
+    justifyContent: 'center',
   },
   pressableButtonContainer: {
     width: 320,
