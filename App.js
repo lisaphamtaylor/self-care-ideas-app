@@ -29,7 +29,7 @@ export default function App() {
         <Stack.Screen
           name='Home'
           component={FilterScreen}
-          options={{ title: 'Home' }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name='Suggestions'

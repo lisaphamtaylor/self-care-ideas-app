@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, SafeAreaView, Text } from 'react-native';
 import { globalStyles } from '../styles/Global';
 import CategoryButton from '../components/CategoryButton';
 
@@ -20,7 +20,7 @@ export default function FilterScreen({ navigation }) {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
       <Text style={globalStyles.titleText}>I want to feel less...</Text>
       <FlatList
         data={CATEGORIES}
@@ -28,6 +28,6 @@ export default function FilterScreen({ navigation }) {
           <CategoryButton item={item} pressHandler={pressHandler} />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }

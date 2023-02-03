@@ -6,12 +6,12 @@ export const globalStyles = StyleSheet.create({
     padding: 24,
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: Colors.LIGHT_CYAN,
+    backgroundColor: Colors.LIGHT_BLUE,
   },
 
   titleText: {
-    fontSize: 50,
-    color: Colors.DARK_PURPLE,
+    fontSize: 45,
+    color: Colors.LIGHT_CYAN,
     textAlign: 'center',
     marginHorizontal: 10,
     fontFamily: 'Loved_Reg',

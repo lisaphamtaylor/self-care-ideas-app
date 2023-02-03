@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { globalStyles } from '../styles/Global';
 import suggestionsData from '../assets/data/idea-data.json';
@@ -42,7 +42,7 @@ export default function SuggestionScreen({ route, navigation }) {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
       <CardsSwipe
         cards={categorySuggestions}
         cardContainerStyle={styles.cardContainer}
@@ -56,7 +56,7 @@ export default function SuggestionScreen({ route, navigation }) {
           </Pressable>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     backgroundColor: Colors.LIGHT_TEAL,
-    borderRadius: 20,
+    borderRadius: 50,
     height: '45%',
     width: '80%',
     shadowColor: Colors.DARK_BLUE,
