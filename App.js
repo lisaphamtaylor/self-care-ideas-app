@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 // importing screens for App
 import FilterScreen from './screens/FilterScreen';
@@ -10,6 +12,17 @@ import SuggestionScreen from './screens/SuggestionScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  // downloading custom fonts
+  let [fontsLoaded] = useFonts({
+    Amatic_Bold: require('./assets/fonts/AmaticSC-Bold.ttf'),
+    Amatic_Reg: require('./assets/fonts/AmaticSC-Regular.ttf'),
+    Loved_Reg: require('./assets/fonts/LovedbytheKing-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

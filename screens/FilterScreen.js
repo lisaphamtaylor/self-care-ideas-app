@@ -1,25 +1,18 @@
 import React from 'react';
-import {
-  Button,
-  FlatList,
-  Pressable,
-  SafeAreaView,
-  Text,
-  View,
-} from 'react-native';
-import { globalStyles } from '../styles/global';
+import { FlatList, SafeAreaView, Text } from 'react-native';
+import { globalStyles } from '../styles/Global';
 import CategoryButton from '../components/CategoryButton';
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
-    { name: 'physical', key: 1 },
-    { name: 'emotional', key: 2 },
-    { name: 'mental', key: 3 },
-    { name: 'social', key: 4 },
-    { name: 'spiritual', key: 5 },
-    { name: 'sensory', key: 6 },
-    { name: 'pleasure', key: 7 },
-    { name: 'random', key: 8 },
+    { name: 'physical', key: 1, buttonText: 'tired' },
+    { name: 'emotional', key: 2, buttonText: 'moody' },
+    { name: 'mental', key: 3, buttonText: 'unmotivated' },
+    { name: 'social', key: 4, buttonText: 'lonely' },
+    { name: 'spiritual', key: 5, buttonText: 'lost' },
+    { name: 'sensory', key: 6, buttonText: 'overstimulated' },
+    { name: 'pleasure', key: 7, buttonText: 'burned out' },
+    { name: 'random', key: 8, buttonText: "I don't even know" },
   ];
 
   const pressHandler = (category) => {
@@ -28,18 +21,10 @@ export default function FilterScreen({ navigation }) {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>TODAY I WANT TO FEEL MORE...</Text>
+      <Text style={globalStyles.titleText}>I want to feel less...</Text>
       <FlatList
         data={CATEGORIES}
         renderItem={({ item }) => (
-          // <View style={globalStyles.pressableButtonContainer}>
-          //   <Pressable
-          //     onPress={() => pressHandler(item.name)}
-          //     style={globalStyles.pressableButton}
-          //   >
-          //     <Text style={globalStyles.titleText}>{item.name}</Text>
-          //   </Pressable>
-          // </View>
           <CategoryButton item={item} pressHandler={pressHandler} />
         )}
       />

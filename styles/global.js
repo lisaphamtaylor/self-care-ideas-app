@@ -1,33 +1,19 @@
 import { StyleSheet } from 'react-native';
+import Colors from './Color';
 
 export const globalStyles = StyleSheet.create({
   container: {
     padding: 24,
     flex: 1,
     justifyContent: 'center',
+    backgroundColor: Colors.LIGHT_CYAN,
   },
-  pressableButtonContainer: {
-    width: 320,
-    height: 68,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 3,
-    borderColor: 'midnightblue',
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  pressableButtonText: {
-    // borderRadius: 10,
-    // width: '100%',
-    // height: '100%',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // flexDirection: 'row',
-  },
+
   titleText: {
-    fontSize: 18,
-    color: '#333',
+    fontSize: 50,
+    color: Colors.DARK_PURPLE,
+    textAlign: 'center',
+    marginHorizontal: 10,
+    fontFamily: 'Loved_Reg',
   },
 });

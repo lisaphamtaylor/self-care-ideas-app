@@ -1,9 +1,9 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, Text } from 'react-native';
 import React from 'react';
-import { globalStyles } from '../styles/global';
+import { globalStyles } from '../styles/Global';
 import suggestionsData from '../assets/data/idea-data.json';
-import SuggestionCard from '../components/SuggestionCard';
 import CardsSwipe from 'react-native-cards-swipe';
+import Colors from '../styles/Color';
 
 // Fisher-Yates shuffle method
 function shuffleArray(array) {
@@ -37,12 +37,20 @@ export default function SuggestionScreen({ route, navigation }) {
 
   categorySuggestions = shuffleArray(categorySuggestions);
 
+  const pressHandlerBackButton = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={globalStyles.container}>
       <CardsSwipe
         cards={categorySuggestions}
         cardContainerStyle={styles.cardContainer}
         renderCard={(card) => <Text style={styles.suggestionText}>{card}</Text>}
+        loop={false}
+        renderNoMoreCard={() => (
+          <Button onPress={pressHandlerBackButton} title='Return Home' />
+        )}
       />
       {/* <FlatList
         data={categorySuggestions}
@@ -54,23 +62,23 @@ export default function SuggestionScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: '#00B4D8',
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    height: '50%',
+    backgroundColor: Colors.LIGHT_TEAL,
+    borderRadius: 20,
+    height: '45%',
     width: '80%',
-    shadowColor: '#000000',
+    shadowColor: Colors.DARK_BLUE,
     shadowOffset: {
-      width: 0,
+      width: 8,
       height: 8,
     },
-    shadowOpacity: 0.07,
+    shadowOpacity: 0.3,
     shadowRadius: 3.3,
   },
   suggestionText: {
-    fontSize: 30,
+    fontSize: 45,
     textAlign: 'center',
     padding: 13,
+    color: Colors.DARK_BLUE,
+    fontFamily: 'Amatic_Reg',
   },
 });

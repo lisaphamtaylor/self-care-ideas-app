@@ -54,7 +54,7 @@
         "category": ["physical", "sensory"]
     },
     {
-        "suggestion": "close your eyes and take 5 intentional breaths--paying attention to the sensation of the breath in your body",
+        "suggestion": "close your eyes and take 5 mindful breaths",
         "category": ["sensory"]
     },
     {
@@ -115,7 +115,7 @@
     },
     {
         "suggestion": "journal",
-        "category": ["physical", "spiritual", "mental", "emotional"]
+        "category": ["spiritual", "mental", "emotional"]
     },
     {
         "suggestion": "put together a motivational playlist",
@@ -126,7 +126,7 @@
         "category": ["pleasure"]
     },
     {
-        "suggestion": "choose a book to reach that's easy and fun, then pass it on to a friend to read",
+        "suggestion": "read an easy/fun book, then pass it on to a friend",
         "category": ["pleasure", "social"]
     },
     {
@@ -194,7 +194,7 @@
         "category": ["mental","emotional"]
     },
     {
-        "suggestion": "think about something you accomplished that you're proud of and how your talents helped you succeed",
+        "suggestion": "think about something you accomplished that you're proud of",
         "category": ["mental"]
     },
     {
@@ -230,11 +230,15 @@
         "category": ["mental"]
     },
     {
-        "suggestion": "listen to a podcast on a topic that intrigues you--bonus if you combine it with a walk or a bath",
+        "suggestion": "listen to a podcast on a topic that intrigues you",
         "category": ["mental"]
     },
     {
-        "suggestion": "sit outside and set a timer--close your eyes and tunr into the sounds around you and the feeling of the sun or wind",
+        "suggestion": "sit outside the feeling of the sun or wind",
         "category": ["mental", "spiritual", "sensory"]
     },
+    {
+        "suggestion": "close your eyes and tune into the sounds around you",
+        "category": ["mental", "spiritual", "sensory"]
+    }
 ]
