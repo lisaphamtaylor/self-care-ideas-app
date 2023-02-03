@@ -1,4 +1,4 @@
-import { Button, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { globalStyles } from '../styles/Global';
 import suggestionsData from '../assets/data/idea-data.json';
@@ -42,25 +42,42 @@ export default function SuggestionScreen({ route, navigation }) {
   };
 
   return (
-    <SafeAreaView style={globalStyles.container}>
+    <View style={globalStyles.container}>
       <CardsSwipe
         cards={categorySuggestions}
         cardContainerStyle={styles.cardContainer}
         renderCard={(card) => <Text style={styles.suggestionText}>{card}</Text>}
         loop={false}
         renderNoMoreCard={() => (
-          <Button onPress={pressHandlerBackButton} title='Return Home' />
+          <Pressable onPress={pressHandlerBackButton}>
+            <View style={styles.backButton}>
+              <Text style={styles.suggestionText}>Start Over</Text>
+            </View>
+          </Pressable>
         )}
       />
-      {/* <FlatList
-        data={categorySuggestions}
-        renderItem={({ item }) => <SuggestionCard suggestion={item} />}
-      /> */}
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  backButton: {
+    alignItems: 'center',
+    backgroundColor: Colors.LIGHT_BLUE,
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginHorizontal: '15%',
+    marginVertical: 10,
+    padding: 2,
+    shadowColor: Colors.DARK_BLUE,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 3.3,
+  },
   cardContainer: {
     backgroundColor: Colors.LIGHT_TEAL,
     borderRadius: 20,

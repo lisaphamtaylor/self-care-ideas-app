@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
     marginHorizontal: '15%',
     marginVertical: 10,
     padding: 10,
+    shadowColor: Colors.DARK_BLUE,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 3.3,
   },
   itemText: {
     fontSize: 30,
