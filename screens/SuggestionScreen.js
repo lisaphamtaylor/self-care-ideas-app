@@ -63,7 +63,7 @@ export default function SuggestionScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   backButton: {
     alignItems: 'center',
-    backgroundColor: Colors.LIGHT_BLUE,
+    backgroundColor: Colors.LIGHT_CYAN,
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'center',
