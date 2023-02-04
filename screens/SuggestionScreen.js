@@ -4,6 +4,7 @@ import { globalStyles } from '../styles/Global';
 import suggestionsData from '../assets/data/idea-data.json';
 import CardsSwipe from 'react-native-cards-swipe';
 import Colors from '../styles/Color';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // Fisher-Yates shuffle method
 function shuffleArray(array) {
@@ -43,19 +44,23 @@ export default function SuggestionScreen({ route, navigation }) {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      <CardsSwipe
-        cards={categorySuggestions}
-        cardContainerStyle={styles.cardContainer}
-        renderCard={(card) => <Text style={styles.suggestionText}>{card}</Text>}
-        loop={false}
-        renderNoMoreCard={() => (
-          <Pressable onPress={pressHandlerBackButton}>
-            <View style={styles.backButton}>
-              <Text style={styles.suggestionText}>Start Over</Text>
-            </View>
-          </Pressable>
-        )}
-      />
+      <GestureHandlerRootView style={styles.gestureView}>
+        <CardsSwipe
+          cards={categorySuggestions}
+          cardContainerStyle={styles.cardContainer}
+          renderCard={(card) => (
+            <Text style={styles.suggestionText}>{card}</Text>
+          )}
+          loop={false}
+          renderNoMoreCard={() => (
+            <Pressable onPress={pressHandlerBackButton}>
+              <View style={styles.backButton}>
+                <Text style={styles.suggestionText}>Start Over</Text>
+              </View>
+            </Pressable>
+          )}
+        />
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
@@ -90,6 +95,9 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 3.3,
+  },
+  gestureView: {
+    flex: 1,
   },
   suggestionText: {
     fontSize: 45,
