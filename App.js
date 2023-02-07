@@ -6,6 +6,8 @@ import { useFonts } from 'expo-font';
 // importing screens for App
 import FilterScreen from './screens/FilterScreen';
 import SuggestionScreen from './screens/SuggestionScreen';
+import SignedInStack from './screens/Navigation';
+import LoginScreen from './screens/LoginScreen';
 
 // initializing Stack
 const Stack = createNativeStackNavigator();
@@ -26,20 +28,29 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name='Home'
-          component={FilterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Suggestions'
-          component={SuggestionScreen}
-          options={{ title: 'Self Care Suggestions' }}
-          // options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    // <SignedInStack />
+
+    <LoginScreen />
+
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen
+    //       name='Home'
+    //       component={FilterScreen}
+    //       options={{ headerShown: false }}
+    //     />
+    //     <Stack.Screen
+    //       name='Suggestions'
+    //       component={SuggestionScreen}
+    //       // options={{ title: 'Self Care Suggestions' }}
+    //       // options={{ headerShown: false }}
+    //     />
+    //     <Stack.Screen
+    //       name='Login'
+    //       component={LoginScreen}
+    //       // options={{ headerShown: false }}
+    //     />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }

@@ -5,7 +5,7 @@ import suggestionsData from '../assets/data/idea-data.json';
 import CardsSwipe from 'react-native-cards-swipe';
 import Colors from '../styles/Color';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Footer from '../components/Footer';
+import Footer, { footerIcons } from '../components/Footer';
 
 // Fisher-Yates shuffle method
 function shuffleArray(array) {
@@ -62,7 +62,7 @@ export default function SuggestionScreen({ route, navigation }) {
           )}
         />
       </GestureHandlerRootView>
-      <Footer />
+      <Footer icons={footerIcons} navigation={navigation} />
     </SafeAreaView>
   );
 }
