@@ -6,7 +6,7 @@ export const globalStyles = StyleSheet.create({
     padding: 24,
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: Colors.LIGHT_BLUE,
+    backgroundColor: Colors.DARK_TEAL,
   },
 
   titleText: {
@@ -14,6 +14,8 @@ export const globalStyles = StyleSheet.create({
     color: Colors.LIGHT_CYAN,
     textAlign: 'center',
     marginHorizontal: 10,
-    fontFamily: 'Loved_Reg',
+    marginTop: 25,
+    marginBottom: 15,
+    fontFamily: 'Chewy',
   },
 });

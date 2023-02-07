@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
     shadowRadius: 3.3,
   },
   itemText: {
-    fontSize: 30,
-    fontFamily: 'Loved_Reg',
+    fontSize: 25,
+    // fontFamily: 'Amatic_Bold',
+    fontFamily: 'McLaren',
     color: Colors.DARK_PURPLE,
   },
 });

@@ -15,7 +15,10 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Amatic_Bold: require('./assets/fonts/AmaticSC-Bold.ttf'),
     Amatic_Reg: require('./assets/fonts/AmaticSC-Regular.ttf'),
+    Chewy: require('./assets/fonts/Chewy-Regular.ttf'),
+    Kalam: require('./assets/fonts/Kalam-Light.ttf'),
     Loved_Reg: require('./assets/fonts/LovedbytheKing-Regular.ttf'),
+    McLaren: require('./assets/fonts/McLaren-Regular.ttf'),
   });
 
   if (!fontsLoaded) {

@@ -11,7 +11,7 @@ export default function FilterScreen({ navigation }) {
     { name: 'social', key: 4, buttonText: 'lonely' },
     { name: 'spiritual', key: 5, buttonText: 'lost' },
     { name: 'sensory', key: 6, buttonText: 'overstimulated' },
-    { name: 'pleasure', key: 7, buttonText: 'burned out' },
+    { name: 'pleasure', key: 7, buttonText: 'burnt out' },
     { name: 'random', key: 8, buttonText: "I don't even know" },
   ];
 
