@@ -37,6 +37,7 @@ export default function App() {
           name='Suggestions'
           component={SuggestionScreen}
           options={{ title: 'Self Care Suggestions' }}
+          // options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
