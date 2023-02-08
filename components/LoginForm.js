@@ -14,10 +14,10 @@ import Validator from 'email-validator';
 
 const LoginForm = () => {
   const LoginFormSchema = Yup.object().shape({
-    email: Yup.string().email().required('An email is required'),
+    email: Yup.string().email().required('an email is required'),
     password: Yup.string()
       .required()
-      .min(8, 'Your password has to have at least 8 characters'),
+      .min(8, 'password must be at least 8 characters'),
   });
 
   return (
@@ -27,7 +27,14 @@ const LoginForm = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={LoginFormSchema}
       >
-        {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          isValid,
+          errors,
+        }) => (
           <View>
             <View
               style={[
@@ -52,6 +59,9 @@ const LoginForm = () => {
                 value={values.email}
               />
             </View>
+            {errors.email && (
+              <Text style={styles.errorText}>{errors.email}</Text>
+            )}
 
             <View
               style={[
@@ -76,9 +86,12 @@ const LoginForm = () => {
                 value={values.password}
               />
             </View>
-            <View style={styles.forgotButton}>
+            {errors.password && (
+              <Text style={styles.errorText}>{errors.password}</Text>
+            )}
+            <TouchableOpacity style={styles.forgotButton}>
               <Text style={styles.forgotText}>Forgot password?</Text>
-            </View>
+            </TouchableOpacity>
 
             <Pressable
               style={styles.button(isValid)}
@@ -104,7 +117,7 @@ const LoginForm = () => {
 const styles = StyleSheet.create({
   wrapper: { marginTop: 200, marginHorizontal: 15 },
   inputField: {
-    borderRadius: 40,
+    borderRadius: 4,
     padding: 12,
     backgroundColor: 'white',
     marginBottom: 10,
@@ -134,6 +147,12 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     marginTop: 50,
+  },
+  errorText: {
+    color: 'red',
+    // fontStyle: 'italic',
+    alignSelf: 'center',
+    marginBottom: 10,
   },
 });
 
