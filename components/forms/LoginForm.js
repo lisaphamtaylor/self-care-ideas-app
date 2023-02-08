@@ -8,8 +8,9 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import Colors from '../styles/Color';
-import firebase from '../firebase';
+import Colors from '../../styles/Color';
+import firebase from '../../firebase';
+import { globalStyles } from '../../styles/Global';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -43,7 +44,7 @@ const LoginForm = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <View style={globalStyles.formikWrapper}>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={(values) => onLogin(values.email, values.password)}
@@ -60,7 +61,7 @@ const LoginForm = ({ navigation }) => {
           <View>
             <View
               style={[
-                styles.inputField,
+                globalStyles.inputField,
                 {
                   borderColor:
                     values.email.length < 1 || Validator.validate(values.email)
@@ -82,12 +83,12 @@ const LoginForm = ({ navigation }) => {
               />
             </View>
             {/* {errors.email && (
-              <Text style={styles.errorText}>{errors.email}</Text>
+              <Text style={globalStyles.errorText}>{errors.email}</Text>
             )} */}
 
             <View
               style={[
-                styles.inputField,
+                globalStyles.inputField,
                 {
                   borderColor:
                     1 > values.password.length || values.password.length >= 8
@@ -109,24 +110,24 @@ const LoginForm = ({ navigation }) => {
               />
             </View>
             {/* {errors.password && (
-              <Text style={styles.errorText}>{errors.password}</Text>
+              <Text style={globalStyles.errorText}>{errors.password}</Text>
             )} */}
             <TouchableOpacity style={styles.forgotButton}>
-              <Text style={styles.forgotText}>Forgot password?</Text>
+              <Text style={globalStyles.forgotText}>Forgot password?</Text>
             </TouchableOpacity>
 
             <Pressable
-              style={styles.button(isValid)}
+              style={globalStyles.registrationButton(isValid)}
               onPress={handleSubmit}
               disabled={!isValid}
             >
-              <Text style={styles.buttonText}>Log In</Text>
+              <Text style={globalStyles.registrationButtonText}>Log In</Text>
             </Pressable>
 
-            <View style={styles.signupContainer}>
+            <View style={globalStyles.signupContainer}>
               <Text style={{ fontSize: 15 }}>Don't have an account?</Text>
               <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                <Text style={styles.forgotText}> Sign Up </Text>
+                <Text style={globalStyles.forgotText}> Sign Up </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -137,44 +138,9 @@ const LoginForm = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: { marginTop: 200, marginHorizontal: 15 },
-  inputField: {
-    borderRadius: 4,
-    padding: 12,
-    backgroundColor: 'white',
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: 'grey',
-  },
   forgotButton: {
     alignItems: 'flex-end',
     marginBottom: 30,
-  },
-  forgotText: { color: '#6BB0F5', fontSize: 15 },
-  button: (isValid) => ({
-    backgroundColor: isValid ? '#0096F6' : '#6BB0F5',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 42,
-    borderRadius: 40,
-    alignSelf: 'center',
-    width: '40%',
-  }),
-  buttonText: {
-    color: Colors.LIGHT_CYAN,
-    fontSize: 20,
-  },
-  signupContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'center',
-    marginTop: 50,
-  },
-  errorText: {
-    color: 'red',
-    // fontStyle: 'italic',
-    alignSelf: 'center',
-    marginBottom: 10,
   },
 });
 

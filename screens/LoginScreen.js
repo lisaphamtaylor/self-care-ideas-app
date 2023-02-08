@@ -2,12 +2,12 @@ import { SafeAreaView, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { globalStyles } from '../styles/Global';
 import Colors from '../styles/Color';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/forms/LoginForm';
 
 const LoginScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={[globalStyles.titleText, { color: Colors.DARK_BLUE }]}>
+    <SafeAreaView style={globalStyles.registrationContainer}>
+      <Text style={[globalStyles.titleText, globalStyles.registrationTitle]}>
         Log In
       </Text>
       <LoginForm navigation={navigation} />
