@@ -42,7 +42,7 @@ export default function LoginForm() {
       </Pressable>
 
       <View style={styles.signupContainer}>
-        <Text>Don't have an account?</Text>
+        <Text style={{ fontSize: 15 }}>Don't have an account?</Text>
         <TouchableOpacity>
           <Text style={styles.forgotText}> Sign Up </Text>
         </TouchableOpacity>
@@ -54,7 +54,7 @@ export default function LoginForm() {
 const styles = StyleSheet.create({
   wrapper: { marginTop: 200, marginHorizontal: 15 },
   inputField: {
-    borderRadius: 4,
+    borderRadius: 40,
     padding: 12,
     backgroundColor: 'white',
     marginBottom: 10,
@@ -65,13 +65,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     marginBottom: 30,
   },
-  forgotText: { color: '#6BB0F5' },
+  forgotText: { color: '#6BB0F5', fontSize: 15 },
   button: {
     backgroundColor: '#0096F6',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 42,
-    borderRadius: 4,
+    borderRadius: 40,
+    alignSelf: 'center',
+    width: '40%',
   },
   buttonText: {
     color: Colors.LIGHT_CYAN,
