@@ -10,17 +10,36 @@ import React from 'react';
 import Colors from '../styles/Color';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import Validator from 'email-validator';
 
 const LoginForm = () => {
+  const LoginFormSchema = Yup.object().shape({
+    email: Yup.string().email().required('An email is required'),
+    password: Yup.string()
+      .required()
+      .min(8, 'Your password has to have at least 8 characters'),
+  });
+
   return (
     <View style={styles.wrapper}>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={(values) => console.log(values)}
+        validationSchema={LoginFormSchema}
       >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
+        {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
           <View>
-            <View style={styles.inputField}>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    values.email.length < 1 || Validator.validate(values.email)
+                      ? 'grey'
+                      : 'red',
+                },
+              ]}
+            >
               <TextInput
                 placeholderTextColor='grey'
                 placeholder='Phone number, username, or email'
@@ -34,7 +53,17 @@ const LoginForm = () => {
               />
             </View>
 
-            <View style={styles.inputField}>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    1 > values.password.length || values.password.length >= 8
+                      ? 'grey'
+                      : 'red',
+                },
+              ]}
+            >
               <TextInput
                 placeholderTextColor='grey'
                 placeholder='Password'
@@ -52,9 +81,9 @@ const LoginForm = () => {
             </View>
 
             <Pressable
-              style={styles.button}
+              style={styles.button(isValid)}
               onPress={handleSubmit}
-              // disabled={!isValid}
+              disabled={!isValid}
             >
               <Text style={styles.buttonText}>Log In</Text>
             </Pressable>
@@ -87,15 +116,15 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   forgotText: { color: '#6BB0F5', fontSize: 15 },
-  button: {
-    backgroundColor: '#0096F6',
+  button: (isValid) => ({
+    backgroundColor: isValid ? '#0096F6' : '#6BB0F5',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 42,
     borderRadius: 40,
     alignSelf: 'center',
     width: '40%',
-  },
+  }),
   buttonText: {
     color: Colors.LIGHT_CYAN,
     fontSize: 20,
