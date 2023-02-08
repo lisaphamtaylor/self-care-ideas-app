@@ -21,7 +21,7 @@ export const globalStyles = StyleSheet.create({
 
   // styles for login and signup screens
   formikWrapper: {
-    marginTop: 150,
+    marginTop: 25,
     marginHorizontal: 15,
   },
 
@@ -35,14 +35,14 @@ export const globalStyles = StyleSheet.create({
   },
 
   registrationButton: (isValid) => ({
-    backgroundColor: isValid ? '#0096F6' : '#6BB0F5',
+    backgroundColor: isValid ? Colors.DARK_TEAL : '#8EE3F6',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 42,
     borderRadius: 40,
     alignSelf: 'center',
-    width: '70%',
-    marginTop: 25,
+    width: '80%',
+    marginTop: 15,
   }),
 
   registrationButtonText: {
@@ -52,22 +52,20 @@ export const globalStyles = StyleSheet.create({
 
   registrationContainer: {
     flex: 1,
-    padding: 24,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: Colors.LIGHT_CYAN,
   },
 
   registrationTitle: {
     color: Colors.DARK_BLUE,
     marginTop: 100,
-    position: 'absolute',
   },
 
   signupContainer: {
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 10,
   },
 
   errorText: {

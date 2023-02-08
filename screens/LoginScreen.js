@@ -15,11 +15,6 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.LIGHT_CYAN,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default LoginScreen;
