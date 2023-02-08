@@ -1,4 +1,5 @@
 import {
+  Alert,
   Pressable,
   StyleSheet,
   Text,
@@ -8,6 +9,8 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '../styles/Color';
+import firebase from '../firebase';
+
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Validator from 'email-validator';
@@ -20,11 +23,30 @@ const LoginForm = ({ navigation }) => {
       .min(8, 'password must be at least 8 characters'),
   });
 
+  const onLogin = async (email, password) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      console.log('firebase login successful!', email, password);
+    } catch (error) {
+      Alert.alert(
+        'Invalid Login',
+        'The password is invalid or the user does not have a password',
+        [
+          {
+            text: 'OK',
+            style: 'cancel',
+          },
+          { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
+        ]
+      );
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => onLogin(values.email, values.password)}
         validationSchema={LoginFormSchema}
       >
         {({
@@ -59,9 +81,9 @@ const LoginForm = ({ navigation }) => {
                 value={values.email}
               />
             </View>
-            {errors.email && (
+            {/* {errors.email && (
               <Text style={styles.errorText}>{errors.email}</Text>
-            )}
+            )} */}
 
             <View
               style={[
@@ -86,9 +108,9 @@ const LoginForm = ({ navigation }) => {
                 value={values.password}
               />
             </View>
-            {errors.password && (
+            {/* {errors.password && (
               <Text style={styles.errorText}>{errors.password}</Text>
-            )}
+            )} */}
             <TouchableOpacity style={styles.forgotButton}>
               <Text style={styles.forgotText}>Forgot password?</Text>
             </TouchableOpacity>
