@@ -12,9 +12,12 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Validator from 'email-validator';
 
-const LoginForm = ({ navigation }) => {
-  const LoginFormSchema = Yup.object().shape({
+const SignupForm = ({ navigation }) => {
+  const SignupFormSchema = Yup.object().shape({
     email: Yup.string().email().required('an email is required'),
+    username: Yup.string()
+      .required()
+      .min(2, 'username must be at least 2 characters'),
     password: Yup.string()
       .required()
       .min(8, 'password must be at least 8 characters'),
@@ -23,9 +26,9 @@ const LoginForm = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', username: '', password: '' }}
         onSubmit={(values) => console.log(values)}
-        validationSchema={LoginFormSchema}
+        validationSchema={SignupFormSchema}
       >
         {({
           handleChange,
@@ -49,7 +52,7 @@ const LoginForm = ({ navigation }) => {
             >
               <TextInput
                 placeholderTextColor='grey'
-                placeholder='Phone number, username, or email'
+                placeholder='Email'
                 autoCapitalize='none'
                 keyboardType='email-address'
                 textContentType='emailAddress'
@@ -59,9 +62,32 @@ const LoginForm = ({ navigation }) => {
                 value={values.email}
               />
             </View>
-            {errors.email && (
+            {/* {errors.email && (
               <Text style={styles.errorText}>{errors.email}</Text>
-            )}
+            )} */}
+
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    values.username.length < 1 || values.username.length >= 3
+                      ? 'grey'
+                      : 'red',
+                },
+              ]}
+            >
+              <TextInput
+                placeholderTextColor='grey'
+                placeholder='Username'
+                autoCapitalize='none'
+                textContentType='username'
+                autoFocus={true}
+                onChangeText={handleChange('username')}
+                onBlur={handleBlur('username')}
+                value={values.username}
+              />
+            </View>
 
             <View
               style={[
@@ -86,25 +112,22 @@ const LoginForm = ({ navigation }) => {
                 value={values.password}
               />
             </View>
-            {errors.password && (
+            {/* {errors.password && (
               <Text style={styles.errorText}>{errors.password}</Text>
-            )}
-            <TouchableOpacity style={styles.forgotButton}>
-              <Text style={styles.forgotText}>Forgot password?</Text>
-            </TouchableOpacity>
+            )} */}
 
             <Pressable
               style={styles.button(isValid)}
               onPress={handleSubmit}
               disabled={!isValid}
             >
-              <Text style={styles.buttonText}>Log In</Text>
+              <Text style={styles.buttonText}>Sign Up</Text>
             </Pressable>
 
             <View style={styles.signupContainer}>
-              <Text style={{ fontSize: 15 }}>Don't have an account?</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-                <Text style={styles.forgotText}> Sign Up </Text>
+              <Text style={{ fontSize: 15 }}>Already have an account?</Text>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={styles.forgotText}> Log In </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -137,6 +160,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignSelf: 'center',
     width: '40%',
+    marginTop: 25,
   }),
   buttonText: {
     color: Colors.LIGHT_CYAN,
@@ -156,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default SignupForm;

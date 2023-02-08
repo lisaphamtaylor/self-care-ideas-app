@@ -8,6 +8,7 @@ import FilterScreen from './screens/FilterScreen';
 import SuggestionScreen from './screens/SuggestionScreen';
 import SignedInStack from './screens/Navigation';
 import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
 
 // initializing Stack
 const Stack = createNativeStackNavigator();
@@ -30,27 +31,31 @@ export default function App() {
   return (
     // <SignedInStack />
 
-    <LoginScreen />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Login'
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Signup'
+          component={SignupScreen}
+          options={{ headerShown: false }}
+        />
 
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen
-    //       name='Home'
-    //       component={FilterScreen}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name='Suggestions'
-    //       component={SuggestionScreen}
-    //       // options={{ title: 'Self Care Suggestions' }}
-    //       // options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name='Login'
-    //       component={LoginScreen}
-    //       // options={{ headerShown: false }}
-    //     />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+        <Stack.Screen
+          name='Home'
+          component={FilterScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Suggestions'
+          component={SuggestionScreen}
+          // options={{ title: 'Self Care Suggestions' }}
+          // options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
