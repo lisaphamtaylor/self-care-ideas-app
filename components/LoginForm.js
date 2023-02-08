@@ -8,48 +8,80 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '../styles/Color';
+import { Formik } from 'formik';
 
-export default function LoginForm() {
+const LoginForm = () => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.inputField}>
-        <TextInput
-          placeholderTextColor='grey'
-          placeholder='Phone number, username, or email'
-          autoCapitalize='none'
-          keyboardType='email-address'
-          textContentType='emailAddress'
-          autoFocus={true}
-        />
-      </View>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = 'Required';
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = 'Invalid email address';
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
+          <View>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholderTextColor='grey'
+                placeholder='Phone number, username, or email'
+                autoCapitalize='none'
+                keyboardType='email-address'
+                textContentType='emailAddress'
+                autoFocus={true}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+              />
+            </View>
 
-      <View style={styles.inputField}>
-        <TextInput
-          placeholderTextColor='grey'
-          placeholder='Password'
-          autoCapitalize='none'
-          autoCorrect={false}
-          secureTextEntry={true}
-          textContentType='password'
-        />
-      </View>
-      <View style={styles.forgotButton}>
-        <Text style={styles.forgotText}>Forgot password?</Text>
-      </View>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholderTextColor='grey'
+                placeholder='Password'
+                autoCapitalize='none'
+                autoCorrect={false}
+                secureTextEntry={true}
+                textContentType='password'
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values.password}
+              />
+            </View>
+            <View style={styles.forgotButton}>
+              <Text style={styles.forgotText}>Forgot password?</Text>
+            </View>
 
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Log In</Text>
-      </Pressable>
+            <Pressable style={styles.button} onPress={handleSubmit}>
+              <Text style={styles.buttonText}>Log In</Text>
+            </Pressable>
 
-      <View style={styles.signupContainer}>
-        <Text style={{ fontSize: 15 }}>Don't have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.forgotText}> Sign Up </Text>
-        </TouchableOpacity>
-      </View>
+            <View style={styles.signupContainer}>
+              <Text style={{ fontSize: 15 }}>Don't have an account?</Text>
+              <TouchableOpacity>
+                <Text style={styles.forgotText}> Sign Up </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      </Formik>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   wrapper: { marginTop: 200, marginHorizontal: 15 },
@@ -86,3 +118,5 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
 });
+
+export default LoginForm;
