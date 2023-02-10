@@ -72,7 +72,7 @@ const LoginForm = ({ navigation }) => {
             >
               <TextInput
                 placeholderTextColor='grey'
-                placeholder='Phone number, username, or email'
+                placeholder='Username or email'
                 autoCapitalize='none'
                 keyboardType='email-address'
                 textContentType='emailAddress'
@@ -80,6 +80,7 @@ const LoginForm = ({ navigation }) => {
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
+                style={globalStyles.input}
               />
             </View>
             {/* {errors.email && (
@@ -107,6 +108,7 @@ const LoginForm = ({ navigation }) => {
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 value={values.password}
+                style={globalStyles.input}
               />
             </View>
             {/* {errors.password && (

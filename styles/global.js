@@ -34,6 +34,10 @@ export const globalStyles = StyleSheet.create({
     borderColor: 'grey',
   },
 
+  input: {
+    fontSize: 18,
+  },
+
   registrationButton: (isValid) => ({
     backgroundColor: isValid ? Colors.DARK_TEAL : '#8EE3F6',
     alignItems: 'center',
@@ -52,7 +56,6 @@ export const globalStyles = StyleSheet.create({
 
   registrationContainer: {
     flex: 1,
-    // justifyContent: 'center',
     backgroundColor: Colors.LIGHT_CYAN,
   },
 

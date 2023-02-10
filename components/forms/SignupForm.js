@@ -94,6 +94,7 @@ const SignupForm = ({ navigation }) => {
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
+                style={globalStyles.input}
               />
             </View>
             {/* {errors.email && (
@@ -120,6 +121,7 @@ const SignupForm = ({ navigation }) => {
                 onChangeText={handleChange('username')}
                 onBlur={handleBlur('username')}
                 value={values.username}
+                style={globalStyles.input}
               />
             </View>
 
@@ -144,6 +146,7 @@ const SignupForm = ({ navigation }) => {
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 value={values.password}
+                style={globalStyles.input}
               />
             </View>
             {/* {errors.password && (
