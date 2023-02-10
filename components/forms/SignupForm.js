@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '../../styles/Color';
-import { firebase } from '../../firebase';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { globalStyles } from '../../styles/Global';
 
 import { Formik } from 'formik';
@@ -29,22 +29,30 @@ const SignupForm = ({ navigation }) => {
 
   const onSignup = async (email, password, username) => {
     try {
-      const authUser = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password);
-      console.log('signup successful', email, password, username);
-    } catch (error) {
-      Alert.alert(
-        'Invalid Sign Up',
-        'The password is invalid or the user does not have a password',
-        [
-          {
-            text: 'OK',
-            style: 'cancel',
-          },
-          { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
-        ]
+      // const authUser = await firebase
+      //   .auth()
+      //   .createUserWithEmailAndPassword(email, password);
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+        }
       );
+      Alert.alert('Successful sign up!', [
+        {
+          text: 'Welcome',
+          onPress: () => navigation.navigate('Home'),
+        },
+      ]);
+    } catch (error) {
+      Alert.alert('Invalid Sign Up', 'Try again', [
+        {
+          text: 'OK',
+          style: 'cancel',
+        },
+        // { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
+      ]);
     }
   };
 
