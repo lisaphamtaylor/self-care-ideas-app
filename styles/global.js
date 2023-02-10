@@ -10,7 +10,7 @@ export const globalStyles = StyleSheet.create({
   },
 
   titleText: {
-    fontSize: 45,
+    fontSize: 40,
     color: Colors.LIGHT_CYAN,
     textAlign: 'center',
     marginHorizontal: 10,

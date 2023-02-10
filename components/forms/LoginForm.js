@@ -11,6 +11,7 @@ import React from 'react';
 import Colors from '../../styles/Color';
 import firebase from '../../firebase';
 import { globalStyles } from '../../styles/Global';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -25,22 +26,29 @@ const LoginForm = ({ navigation }) => {
   });
 
   const onLogin = async (email, password) => {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      console.log('firebase login successful!', email, password);
-    } catch (error) {
-      Alert.alert(
-        'Invalid Login',
-        'The password is invalid or the user does not have a password',
-        [
-          {
-            text: 'OK',
-            style: 'cancel',
-          },
-          { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
-        ]
-      );
-    }
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        navigation.navigate('Home');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Alert.alert(
+          'Invalid Login',
+          'The password is invalid or the user does not have a password',
+          [
+            {
+              text: 'OK',
+              style: 'cancel',
+            },
+            { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
+          ]
+        );
+      });
   };
 
   return (
@@ -83,9 +91,9 @@ const LoginForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {/* {errors.email && (
+            {errors.email && (
               <Text style={globalStyles.errorText}>{errors.email}</Text>
-            )} */}
+            )}
 
             <View
               style={[

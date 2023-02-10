@@ -97,9 +97,9 @@ const SignupForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {/* {errors.email && (
+            {errors.email && (
               <Text style={globalStyles.errorText}>{errors.email}</Text>
-            )} */}
+            )}
 
             <View
               style={[
@@ -149,9 +149,9 @@ const SignupForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {/* {errors.password && (
+            {errors.password && (
               <Text style={globalStyles.errorText}>{errors.password}</Text>
-            )} */}
+            )}
 
             <Pressable
               style={globalStyles.registrationButton(isValid)}

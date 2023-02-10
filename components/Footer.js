@@ -3,36 +3,53 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../styles/Color';
 import { Divider } from 'react-native-elements';
+import { getAuth, signOut } from 'firebase/auth';
 
 const iconSize = 25;
 
-const footerIcons = [
-  {
-    tabName: 'Home',
-    iconName: 'home-sharp',
-  },
-  {
-    tabName: 'Favorites',
-    iconName: 'heart',
-  },
-  {
-    tabName: 'Calendar',
-    iconName: 'ios-calendar',
-  },
-  {
-    tabName: 'Profile',
-    iconName: 'person',
-  },
-];
+// const footerIcons = [
+//   {
+//     tabName: 'Home',
+//     iconName: 'home-sharp',
+//   },
+//   {
+//     tabName: 'Favorites',
+//     iconName: 'heart',
+//   },
+//   {
+//     tabName: 'Calendar',
+//     iconName: 'ios-calendar',
+//   },
+//   {
+//     tabName: 'Profile',
+//     iconName: 'person',
+//   },
+// ];
 
 const Footer = ({ navigation }) => {
-  // const [activeTab, setActiveTab] = useState('');
+  const [activeTab, setActiveTab] = useState('');
 
-  // const Icon = ({ icon }) => (
-  //   <TouchableOpacity onPress={() => console.log(icon)}>
-  //     <Ionicons name={icon.iconName} size={iconSize} style={styles.icon} />
-  //   </TouchableOpacity>
-  // );
+  const pressHome = () => {
+    setActiveTab('Home');
+    navigation.navigate('Home');
+  };
+
+  const pressProfile = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        setActiveTab('Login');
+        navigation.navigate('Login');
+      })
+      .catch((error) => {
+        Alert.alert('Could not log out', error.message, [
+          {
+            text: 'OK',
+            style: 'cancel',
+          },
+        ]);
+      });
+  };
 
   return (
     <View style={styles.wrapper}>
@@ -41,7 +58,7 @@ const Footer = ({ navigation }) => {
         {/*{icons.map((icon, index) => (
         <Icon key={index} icon={icon} />
       ))} */}
-        <TouchableOpacity onPress={() => navigation.push('Home')}>
+        <TouchableOpacity onPress={pressHome}>
           <Ionicons name='home-sharp' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -50,7 +67,7 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity>
           <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={pressProfile}>
           <Ionicons name='person' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
       </View>
