@@ -28,32 +28,33 @@ const SignupForm = ({ navigation }) => {
   });
 
   const onSignup = async (email, password, username) => {
-    try {
-      // const authUser = await firebase
-      //   .auth()
-      //   .createUserWithEmailAndPassword(email, password);
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-        }
-      );
-      Alert.alert('Successful sign up!', [
-        {
-          text: 'Welcome',
-          onPress: () => navigation.navigate('Home'),
-        },
-      ]);
-    } catch (error) {
-      Alert.alert('Invalid Sign Up', 'Try again', [
-        {
-          text: 'OK',
-          style: 'cancel',
-        },
-        // { text: 'Sign Up', onPress: () => navigation.navigate('Signup') },
-      ]);
-    }
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        Alert.alert('Successful sign up!', [
+          {
+            text: 'Welcome',
+            onPress: () => navigation.navigate('Home'),
+          },
+        ]);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Alert.alert(
+          'Invalid Sign Up',
+          'There already is an account with this email address.',
+          [
+            {
+              text: 'OK',
+              style: 'cancel',
+            },
+            { text: 'Log In', onPress: () => navigation.navigate('Login') },
+          ]
+        );
+      });
   };
 
   return (
