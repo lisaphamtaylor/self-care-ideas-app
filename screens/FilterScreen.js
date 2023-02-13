@@ -28,7 +28,7 @@ onAuthStateChanged(auth, (user) => {
     setDoc(
       favsRef,
       {
-        favorites: [],
+        favorites: '',
       },
       { merge: true }
     );
