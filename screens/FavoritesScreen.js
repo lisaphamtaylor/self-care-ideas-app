@@ -11,8 +11,9 @@ import { globalStyles } from '../styles/Global';
 import { collection, getDocs, query } from 'firebase/firestore';
 import { currentDate, uid } from './FilterScreen';
 import { db } from '../firebase';
+import Footer from '../components/Footer';
 
-const FavoritesScreen = () => {
+const FavoritesScreen = ({ navigation }) => {
   // const [favorites, setFavorites] = useState([
   //   {
   //     id: 'Mon Feb 13 2023',
@@ -57,7 +58,7 @@ const FavoritesScreen = () => {
       await getDocs(collection(db, 'users', uid, 'date')).then(
         (querySnapshot) => {
           const newData = querySnapshot.docs.map((doc) => ({
-            ...doc.data(),
+            data: doc.data().favorites,
             id: doc.id,
           }));
           setFavorites(newData);
@@ -75,7 +76,7 @@ const FavoritesScreen = () => {
   console.log(`FAVORITES: `, favorites);
   return (
     <SafeAreaView style={globalStyles.container}>
-      <FlatList
+      {/* <FlatList
         data={favorites}
         renderItem={({ item }) =>
           item.favorites?.map((idea, i) => (
@@ -87,21 +88,45 @@ const FavoritesScreen = () => {
           ))
         }
         style={globalStyles.titleText}
-      />
-      {/* <SectionList
+      /> */}
+      <SectionList
+        // sections={[
+        //   {
+        //     title: 'Sides',
+        //     data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+        //   },
+        //   {
+        //     title: 'Drinks',
+        //     data: ['Water', 'Coke', 'Beer'],
+        //   },
+        //   {
+        //     title: 'Desserts',
+        //     data: ['Cheese Cake', 'Ice Cream'],
+        //   },
+        // ]}
         sections={favorites}
-        // keyExtractor={(item) => item}
-        renderItem={({ item }) =>
-          item.favorites?.map((idea, i) => (
-            <View style={styles.favItem}>
-              <Text key={i}>{idea}</Text>
-            </View>
-          ))
-        }
+        renderItem={({ item }) => (
+          <View style={styles.favItem}>
+            <Text>{item}</Text>
+          </View>
+        )}
         renderSectionHeader={({ section: { id } }) => (
           <Text style={globalStyles.titleText}>{id}</Text>
         )}
-      /> */}
+
+        // keyExtractor={(item) => item}
+        // renderItem={({ item }) =>
+        //   item.favorites?.map((idea, i) => (
+        //     <View style={styles.favItem}>
+        //       <Text key={i}>{idea}</Text>
+        //     </View>
+        //   ))
+        // }
+        // renderSectionHeader={({ section: { id } }) => (
+        //   <Text style={globalStyles.titleText}>{id}</Text>
+        // )}
+      />
+      <Footer navigation={navigation} />
     </SafeAreaView>
   );
 };
