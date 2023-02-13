@@ -1,26 +1,18 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from './firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-export default function useFirebaseAuth() {
-  const [authUser, setAuthUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+const auth = getAuth();
+let uid = `default`;
+let username = `default`;
 
-  const clear = () => {
-    setAuthUser(null);
-    setIsLoading(false);
-  };
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    uid = user.uid;
+    username = user.displayName;
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
-  const authStateChanged = async (user) => {
-    setIsLoading(true);
-    if (!user) {
-      clear();
-      return;
-    }
-    setAuthUser({
-      uid: user.uid,
-      email: user.email,
-    });
-    setIsLoading(false);
-  };
-}
+export { uid };

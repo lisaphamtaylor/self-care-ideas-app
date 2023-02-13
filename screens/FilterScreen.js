@@ -2,7 +2,11 @@ import React from 'react';
 import { FlatList, SafeAreaView, Text } from 'react-native';
 import { globalStyles } from '../styles/Global';
 import CategoryButton from '../components/CategoryButton';
+
+import { uid, username } from '../firebase/auth';
 // import Footer from '../components/Footer';
+
+console.log(`uid: ${uid}`, `username: `);
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
