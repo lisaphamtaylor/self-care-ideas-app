@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../styles/Color';
@@ -55,9 +55,6 @@ const Footer = ({ navigation }) => {
     <View style={styles.wrapper}>
       <Divider width={1} orientation='vertical' />
       <View style={styles.container}>
-        {/*{icons.map((icon, index) => (
-        <Icon key={index} icon={icon} />
-      ))} */}
         <TouchableOpacity onPress={pressHome}>
           <Ionicons name='home-sharp' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
