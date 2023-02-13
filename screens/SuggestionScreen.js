@@ -5,6 +5,8 @@ import suggestionsData from '../assets/data/idea-data.json';
 import CardsSwipe from 'react-native-cards-swipe';
 import Colors from '../styles/Color';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { favsRef, uid } from './FilterScreen';
+import { arrayUnion, updateDoc } from 'firebase/firestore';
 // import Footer, { footerIcons } from '../components/Footer';
 
 // Fisher-Yates shuffle method
@@ -22,8 +24,22 @@ function shuffleArray(array) {
   }
   return array;
 }
+let addFavCard = () => {};
+
+if (favsRef !== null) {
+  addFavCard = (card) => {
+    const cardMessage = categorySuggestions[card];
+    updateDoc(favsRef, { favorites: arrayUnion(cardMessage) });
+  };
+} else {
+  addFavCard = (card) => {
+    console.log(`favsRef is null`);
+  };
+}
 
 export default function SuggestionScreen({ route, navigation }) {
+  console.log(uid);
+
   // getting the params
   const { chosenCategory } = route.params;
 
@@ -60,6 +76,9 @@ export default function SuggestionScreen({ route, navigation }) {
               </View>
             </Pressable>
           )}
+          onSwipedRight={(card) => {
+            addFavCard(card);
+          }}
         />
       </GestureHandlerRootView>
       {/* <Footer icons={footerIcons} navigation={navigation} /> */}

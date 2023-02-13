@@ -21,7 +21,7 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in
     uid = user.uid;
     // username = user.displayName;
-    console.log(`uid: ${uid}`, `username: `);
+    // console.log(`uid: ${uid}`, `username: `);
     favsRef = doc(db, 'users', uid, 'date', currentDate);
 
     // create a new db document db-users-uid-date-currentDate merge if it exists
@@ -38,7 +38,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-export { favsRef };
+export { uid };
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
