@@ -78,10 +78,18 @@ export default function SuggestionScreen({ route, navigation }) {
             </Pressable>
           )}
           renderNope={() => (
-            <AntDesign name='dislike1' size={50} color={Colors.DARK_PURPLE} />
+            <AntDesign
+              name='dislike1'
+              size={50}
+              style={[styles.renderIcon, { transform: [{ rotate: '15deg' }] }]}
+            />
           )}
           renderYep={() => (
-            <AntDesign name='like1' size={50} color={Colors.DARK_PURPLE} />
+            <AntDesign
+              name='like1'
+              size={50}
+              style={[styles.renderIcon, { transform: [{ rotate: '-15deg' }] }]}
+            />
           )}
           onSwipedRight={(card) => {
             addFavCard(card);
@@ -133,5 +141,10 @@ const styles = StyleSheet.create({
     padding: 13,
     color: Colors.DARK_BLUE,
     fontFamily: 'Amatic_Reg',
+  },
+
+  renderIcon: {
+    color: Colors.DARK_BLUE,
+    padding: 20,
   },
 });
