@@ -73,7 +73,7 @@ export default function SuggestionScreen({ route, navigation }) {
           renderNoMoreCard={() => (
             <Pressable onPress={pressHandlerBackButton}>
               <View style={styles.backButton}>
-                <Text style={styles.suggestionText}>Start Over</Text>
+                <Text style={styles.suggestionText}>Return Home</Text>
               </View>
             </Pressable>
           )}
