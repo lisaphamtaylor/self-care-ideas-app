@@ -34,6 +34,11 @@ const Footer = ({ navigation }) => {
     navigation.navigate('Home');
   };
 
+  const pressFavorites = () => {
+    setActiveTab('Favorites');
+    navigation.navigate('Favorites');
+  };
+
   const pressProfile = () => {
     const auth = getAuth();
     signOut(auth)
@@ -58,7 +63,7 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity onPress={pressHome}>
           <Ionicons name='home-sharp' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={pressFavorites}>
           <Ionicons name='heart' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
         <TouchableOpacity>

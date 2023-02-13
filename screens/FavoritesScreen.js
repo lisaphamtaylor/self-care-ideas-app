@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { globalStyles } from '../styles/Global';
 
 const FavoritesScreen = () => {
   return (
-    <View>
-      <Text>FavoritesScreen</Text>
-    </View>
+    <SafeAreaView style={globalStyles.container}>
+      <View>
+        <Text>FavoritesScreen</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
