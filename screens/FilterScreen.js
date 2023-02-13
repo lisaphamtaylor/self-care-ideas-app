@@ -38,7 +38,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-export { uid };
+export { uid, currentDate };
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [

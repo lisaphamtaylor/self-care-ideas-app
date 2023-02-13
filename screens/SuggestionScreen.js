@@ -5,8 +5,10 @@ import suggestionsData from '../assets/data/idea-data.json';
 import CardsSwipe from 'react-native-cards-swipe';
 import Colors from '../styles/Color';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { favsRef, uid } from './FilterScreen';
-import { arrayUnion, updateDoc } from 'firebase/firestore';
+import { currentDate, uid } from './FilterScreen';
+import { db } from '../firebase';
+
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 // import Footer, { footerIcons } from '../components/Footer';
 
 // Fisher-Yates shuffle method
@@ -24,22 +26,10 @@ function shuffleArray(array) {
   }
   return array;
 }
+
 let addFavCard = () => {};
 
-if (favsRef !== null) {
-  addFavCard = (card) => {
-    const cardMessage = categorySuggestions[card];
-    updateDoc(favsRef, { favorites: arrayUnion(cardMessage) });
-  };
-} else {
-  addFavCard = (card) => {
-    console.log(`favsRef is null`);
-  };
-}
-
 export default function SuggestionScreen({ route, navigation }) {
-  console.log(uid);
-
   // getting the params
   const { chosenCategory } = route.params;
 
@@ -59,6 +49,19 @@ export default function SuggestionScreen({ route, navigation }) {
     navigation.navigate('Home');
   };
 
+  if (uid !== null) {
+    const favsRef = doc(db, 'users', uid, 'date', currentDate);
+    addFavCard = (card) => {
+      const cardMessage = categorySuggestions[card];
+      updateDoc(favsRef, {
+        favorites: arrayUnion(cardMessage),
+      });
+    };
+  } else {
+    addFavCard = (card) => {
+      console.log(`favsRef is null`);
+    };
+  }
   return (
     <SafeAreaView style={globalStyles.container}>
       <GestureHandlerRootView style={styles.gestureView}>
