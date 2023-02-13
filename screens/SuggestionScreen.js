@@ -7,6 +7,7 @@ import Colors from '../styles/Color';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { currentDate, uid } from './FilterScreen';
 import { db } from '../firebase';
+import { AntDesign } from '@expo/vector-icons';
 
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import Footer from '../components/Footer';
@@ -76,6 +77,12 @@ export default function SuggestionScreen({ route, navigation }) {
               </View>
             </Pressable>
           )}
+          renderNope={() => (
+            <AntDesign name='dislike1' size={50} color={Colors.DARK_PURPLE} />
+          )}
+          renderYep={() => (
+            <AntDesign name='like1' size={50} color={Colors.DARK_PURPLE} />
+          )}
           onSwipedRight={(card) => {
             addFavCard(card);
           }}
@@ -107,7 +114,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: Colors.LIGHT_TEAL,
     borderRadius: 50,
-    height: '45%',
+    height: '50%',
     width: '80%',
     shadowColor: Colors.DARK_BLUE,
     shadowOffset: {
