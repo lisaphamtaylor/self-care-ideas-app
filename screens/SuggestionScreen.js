@@ -9,7 +9,7 @@ import { currentDate, uid } from './FilterScreen';
 import { db } from '../firebase';
 
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
-// import Footer, { footerIcons } from '../components/Footer';
+import Footer from '../components/Footer';
 
 // Fisher-Yates shuffle method
 function shuffleArray(array) {
@@ -58,9 +58,6 @@ export default function SuggestionScreen({ route, navigation }) {
       });
     };
   } else {
-    addFavCard = (card) => {
-      console.log(`favsRef is null`);
-    };
   }
   return (
     <SafeAreaView style={globalStyles.container}>
@@ -84,7 +81,7 @@ export default function SuggestionScreen({ route, navigation }) {
           }}
         />
       </GestureHandlerRootView>
-      {/* <Footer icons={footerIcons} navigation={navigation} /> */}
+      <Footer navigation={navigation} />
     </SafeAreaView>
   );
 }

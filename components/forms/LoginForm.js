@@ -8,8 +8,6 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import Colors from '../../styles/Color';
-import firebase from '../../firebase';
 import { globalStyles } from '../../styles/Global';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -31,7 +29,6 @@ const LoginForm = ({ navigation }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
         navigation.navigate('Home');
       })
       .catch((error) => {

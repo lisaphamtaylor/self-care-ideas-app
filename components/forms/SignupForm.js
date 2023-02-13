@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import Colors from '../../styles/Color';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { globalStyles } from '../../styles/Global';
 

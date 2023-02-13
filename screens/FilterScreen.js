@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 
 const auth = getAuth();
 let uid = `default`;
@@ -21,7 +21,6 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in
     uid = user.uid;
     // username = user.displayName;
-    // console.log(`uid: ${uid}`, `username: `);
     favsRef = doc(db, 'users', uid, 'date', currentDate);
 
     // create a new db document db-users-uid-date-currentDate merge if it exists
@@ -34,7 +33,6 @@ onAuthStateChanged(auth, (user) => {
     );
   } else {
     // User is signed out
-    // ...
   }
 });
 
@@ -65,7 +63,7 @@ export default function FilterScreen({ navigation }) {
           <CategoryButton item={item} pressHandler={pressHandler} />
         )}
       />
-      {/* <Footer /> */}
+      <Footer navigation={navigation} />
     </SafeAreaView>
   );
 }
