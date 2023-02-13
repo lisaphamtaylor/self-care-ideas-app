@@ -9,6 +9,7 @@ import SuggestionScreen from './screens/SuggestionScreen';
 import SignedInStack from './screens/Navigation';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
 
 // initializing Stack
 const Stack = createNativeStackNavigator();
@@ -55,6 +56,7 @@ export default function App() {
           options={{ title: 'Self Care Suggestions' }}
           // options={{ headerShown: false }}
         />
+        <Stack.Screen name='Favorites' component={FavoritesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

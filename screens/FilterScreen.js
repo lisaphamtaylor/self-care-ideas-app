@@ -22,6 +22,7 @@ onAuthStateChanged(auth, (user) => {
     uid = user.uid;
     // username = user.displayName;
     favsRef = doc(db, 'users', uid, 'date', currentDate);
+    console.log(uid);
 
     // create a new db document db-users-uid-date-currentDate merge if it exists
     setDoc(
