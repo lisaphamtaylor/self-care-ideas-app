@@ -11,6 +11,9 @@ import { doc, setDoc } from 'firebase/firestore';
 
 const auth = getAuth();
 let uid = `default`;
+let favsRef = null;
+const currentDate = new Date().toDateString();
+
 // let username = `default`;
 
 onAuthStateChanged(auth, (user) => {
@@ -19,28 +22,21 @@ onAuthStateChanged(auth, (user) => {
     uid = user.uid;
     // username = user.displayName;
     console.log(`uid: ${uid}`, `username: `);
+    favsRef = doc(db, 'users', uid, 'date', currentDate);
+
+    // create a new db document db-users-uid-date-currentDate merge if it exists
+    setDoc(
+      favsRef,
+      {
+        favorites: [],
+      },
+      { merge: true }
+    );
   } else {
     // User is signed out
     // ...
   }
 });
-
-const currentDate = new Date().toDateString();
-
-let favsRef = null;
-
-if (uid) {
-  favsRef = doc(db, 'users', uid, 'date', currentDate);
-
-  // create a new db document db-users-uid-date-currentDate merge if it exists
-  setDoc(
-    favsRef,
-    {
-      favorites: [],
-    },
-    { merge: true }
-  );
-}
 
 export { favsRef };
 
