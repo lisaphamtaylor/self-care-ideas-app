@@ -3,10 +3,46 @@ import { FlatList, SafeAreaView, Text } from 'react-native';
 import { globalStyles } from '../styles/Global';
 import CategoryButton from '../components/CategoryButton';
 
-import { uid, username } from '../firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { db } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
+
 // import Footer from '../components/Footer';
 
-console.log(`uid: ${uid}`, `username: `);
+const auth = getAuth();
+let uid = `default`;
+// let username = `default`;
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    uid = user.uid;
+    // username = user.displayName;
+    console.log(`uid: ${uid}`, `username: `);
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+const currentDate = new Date().toDateString();
+
+let favsRef = null;
+
+if (uid) {
+  favsRef = doc(db, 'users', uid, 'date', currentDate);
+
+  // create a new db document db-users-uid-date-currentDate merge if it exists
+  setDoc(
+    favsRef,
+    {
+      favorites: [],
+    },
+    { merge: true }
+  );
+}
+
+export { favsRef };
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
