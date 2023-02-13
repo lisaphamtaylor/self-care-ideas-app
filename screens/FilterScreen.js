@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView, Text } from 'react-native';
 import { globalStyles } from '../styles/Global';
 import CategoryButton from '../components/CategoryButton';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 export default function FilterScreen({ navigation }) {
   const CATEGORIES = [
@@ -29,7 +29,7 @@ export default function FilterScreen({ navigation }) {
           <CategoryButton item={item} pressHandler={pressHandler} />
         )}
       />
-      <Footer />
+      {/* <Footer /> */}
     </SafeAreaView>
   );
 }
