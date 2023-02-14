@@ -10,6 +10,7 @@ import SignedInStack from './screens/Navigation';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import MoodScreen from './screens/MoodScreen';
 
 // initializing Stack
 const Stack = createNativeStackNavigator();
@@ -60,6 +61,11 @@ export default function App() {
           name='Favorites'
           component={FavoritesScreen}
           options={{ title: 'Favorites Log' }}
+        />
+        <Stack.Screen
+          name='Mood'
+          component={MoodScreen}
+          options={{ title: 'Journal' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

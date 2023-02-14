@@ -50,6 +50,7 @@ export default function SuggestionScreen({ route, navigation }) {
     navigation.navigate('Home');
   };
 
+  // adding favorites to firestore
   if (uid !== null) {
     const favsRef = doc(db, 'users', uid, 'date', currentDate);
     addFavCard = (card) => {
@@ -58,8 +59,8 @@ export default function SuggestionScreen({ route, navigation }) {
         favorites: arrayUnion(cardMessage),
       });
     };
-  } else {
   }
+
   return (
     <SafeAreaView style={globalStyles.container}>
       <GestureHandlerRootView style={styles.gestureView}>

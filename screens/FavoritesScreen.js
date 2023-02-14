@@ -54,12 +54,12 @@ const FavoritesScreen = ({ navigation }) => {
     return (
       <View style={styles.sectionHeader}>
         <Text style={styles.headerText}>{id}</Text>
-        <Text style={styles.headerText}>Mood: {mood}</Text>
+        {mood ? <Text style={styles.moodText}>mood: {mood}</Text> : null}
       </View>
     );
   }
 
-  console.log(favorites);
+  // console.log(favorites);
   return (
     <SafeAreaView style={globalStyles.container}>
       <SectionList
@@ -102,6 +102,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     // fontFamily: 'Amatic_Bold',
     color: Colors.LIGHT_CYAN,
+  },
+  moodText: {
+    fontSize: 23,
+    fontStyle: 'italic',
+    color: Colors.LIGHT_CYAN,
+    marginLeft: 15,
   },
   sectionHeader: {
     marginHorizontal: 30,

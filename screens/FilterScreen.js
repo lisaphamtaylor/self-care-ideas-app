@@ -10,11 +10,9 @@ import { doc, setDoc } from 'firebase/firestore';
 import Footer from '../components/Footer';
 
 const auth = getAuth();
-let uid = `default`;
+let uid = null;
 let favsRef = null;
 const currentDate = new Date().toDateString();
-
-// let username = `default`;
 
 onAuthStateChanged(auth, (user) => {
   if (user) {

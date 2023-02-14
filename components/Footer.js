@@ -7,43 +7,29 @@ import { getAuth, signOut } from 'firebase/auth';
 
 const iconSize = 25;
 
-// const footerIcons = [
-//   {
-//     tabName: 'Home',
-//     iconName: 'home-sharp',
-//   },
-//   {
-//     tabName: 'Favorites',
-//     iconName: 'heart',
-//   },
-//   {
-//     tabName: 'Calendar',
-//     iconName: 'ios-calendar',
-//   },
-//   {
-//     tabName: 'Profile',
-//     iconName: 'person',
-//   },
-// ];
-
 const Footer = ({ navigation }) => {
-  const [activeTab, setActiveTab] = useState('');
+  // const [activeTab, setActiveTab] = useState('');
 
   const pressHome = () => {
-    setActiveTab('Home');
+    // setActiveTab('Home');
     navigation.navigate('Home');
   };
 
   const pressFavorites = () => {
-    setActiveTab('Favorites');
+    // setActiveTab('Favorites');
     navigation.navigate('Favorites');
+  };
+
+  const pressMood = () => {
+    // setActiveTab('Favorites');
+    navigation.navigate('Mood');
   };
 
   const pressProfile = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        setActiveTab('Login');
+        // setActiveTab('Login');
         navigation.navigate('Login');
       })
       .catch((error) => {
@@ -66,7 +52,7 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity onPress={pressFavorites}>
           <Ionicons name='heart' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={pressMood}>
           {/* <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} /> */}
           <AntDesign
             name='smile-circle'
@@ -95,10 +81,11 @@ const styles = StyleSheet.create({
     color: Colors.LIGHT_CYAN,
   },
   wrapper: {
+    // alignContent: 'center',
     // position: 'absolute',
     // width: '100%',
-    // // bottom: '3%',
-    // // zindex: 999,
+    // bottom: '3%',
+    // zindex: 999,
     // backgroundColor: '#095E71',
   },
 });
