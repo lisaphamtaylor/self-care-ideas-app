@@ -53,9 +53,8 @@ const FavoritesScreen = ({ navigation }) => {
   function renderSectionHeader({ section: { id, mood } }) {
     return (
       <View style={styles.sectionHeader}>
-        <Text style={styles.headerText}>
-          {id} Mood: {mood}
-        </Text>
+        <Text style={styles.headerText}>{id}</Text>
+        <Text style={styles.headerText}>Mood: {mood}</Text>
       </View>
     );
   }

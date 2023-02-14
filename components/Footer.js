@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import Colors from '../styles/Color';
 import { Divider } from 'react-native-elements';
 import { getAuth, signOut } from 'firebase/auth';
@@ -67,7 +67,12 @@ const Footer = ({ navigation }) => {
           <Ionicons name='heart' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} />
+          {/* <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} /> */}
+          <AntDesign
+            name='smile-circle'
+            size={iconSize - 2}
+            style={styles.icon}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={pressProfile}>
           <Ionicons name='person' size={iconSize} style={styles.icon} />

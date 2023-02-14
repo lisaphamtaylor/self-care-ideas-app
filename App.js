@@ -56,7 +56,11 @@ export default function App() {
           options={{ title: 'Self Care Suggestions' }}
           // options={{ headerShown: false }}
         />
-        <Stack.Screen name='Favorites' component={FavoritesScreen} />
+        <Stack.Screen
+          name='Favorites'
+          component={FavoritesScreen}
+          options={{ title: 'Favorites Log' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
