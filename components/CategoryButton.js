@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 25,
-    // fontFamily: 'Amatic_Bold',
     fontFamily: 'McLaren',
     color: Colors.DARK_PURPLE,
   },

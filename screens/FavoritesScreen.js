@@ -12,48 +12,12 @@ import { collection, getDocs, query } from 'firebase/firestore';
 import { currentDate, uid } from './FilterScreen';
 import { db } from '../firebase';
 import Footer from '../components/Footer';
+import Colors from '../styles/Color';
 
 const FavoritesScreen = ({ navigation }) => {
-  // const [favorites, setFavorites] = useState([
-  //   {
-  //     id: 'Mon Feb 13 2023',
-  //     favorites: [
-  //       "list 5 things you're grateful for",
-  //       'sit outside the feeling of the sun or wind',
-  //       'find a quiet spot and meditate',
-  //       'set an intention and write it down somewhere you can reference it throughout your day',
-  //       'read an easy/fun book, then pass it on to a friend',
-  //       'carry out one act of kindness for a stranger today',
-  //       'write a postcard or letter to send to a loved one',
-  //       'hug a loved one or cherished pet',
-  //       'get a massage',
-  //     ],
-  //   },
-  //   {
-  //     id: 'Sun Feb 12 2023',
-  //     favorites: [
-  //       'get a massage',
-  //       'write a postcard or letter to send to a loved one',
-  //       'plan a night with loved ones',
-  //       'look at old photographs from good memories',
-  //       'sit in a coffee shop or on a park bench and people watch',
-  //     ],
-  //   },
-  // ]);
   const [favorites, setFavorites] = useState([]);
 
   if (uid !== null) {
-    // const q = query(
-    //   collection(db, 'users', '4tTjdZZ5g8apfPDxZYf50oEHfFA3', 'date')
-    // );
-
-    // const querySnapshot = getDocs(
-    //   collection(db, 'users', '4tTjdZZ5g8apfPDxZYf50oEHfFA3', 'date')
-    // );
-    // for (const doc of querySnapshot.docs) {
-    //   console.log(doc.id, '=>', doc.data());
-    // }
-
     const fetchFavorites = async () => {
       await getDocs(collection(db, 'users', uid, 'date')).then(
         (querySnapshot) => {
@@ -62,7 +26,6 @@ const FavoritesScreen = ({ navigation }) => {
             id: doc.id,
           }));
           setFavorites(newData);
-          // console.log(newData);
         }
       );
     };
@@ -73,7 +36,6 @@ const FavoritesScreen = ({ navigation }) => {
     console.log('No such document!');
   }
 
-  console.log(`FAVORITES: `, favorites);
   return (
     <SafeAreaView style={globalStyles.container}>
       {/* <FlatList
@@ -90,41 +52,24 @@ const FavoritesScreen = ({ navigation }) => {
         style={globalStyles.titleText}
       /> */}
       <SectionList
-        // sections={[
-        //   {
-        //     title: 'Sides',
-        //     data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-        //   },
-        //   {
-        //     title: 'Drinks',
-        //     data: ['Water', 'Coke', 'Beer'],
-        //   },
-        //   {
-        //     title: 'Desserts',
-        //     data: ['Cheese Cake', 'Ice Cream'],
-        //   },
-        // ]}
         sections={favorites}
-        renderItem={({ item }) => (
-          <View style={styles.favItem}>
-            <Text>{item}</Text>
+        renderItem={({ item, index, section }) => (
+          <View
+            style={[
+              styles.favItem,
+              index === 0 && styles.itemFirst,
+              index === section.data.length - 1 && styles.itemLast,
+            ]}
+          >
+            <Text style={styles.itemText}>{item}</Text>
           </View>
         )}
         renderSectionHeader={({ section: { id } }) => (
-          <Text style={globalStyles.titleText}>{id}</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.headerText}>{id}</Text>
+          </View>
         )}
-
-        // keyExtractor={(item) => item}
-        // renderItem={({ item }) =>
-        //   item.favorites?.map((idea, i) => (
-        //     <View style={styles.favItem}>
-        //       <Text key={i}>{idea}</Text>
-        //     </View>
-        //   ))
-        // }
-        // renderSectionHeader={({ section: { id } }) => (
-        //   <Text style={globalStyles.titleText}>{id}</Text>
-        // )}
+        stickySectionHeadersEnabled={false}
       />
       <Footer navigation={navigation} />
     </SafeAreaView>
@@ -134,5 +79,35 @@ const FavoritesScreen = ({ navigation }) => {
 export default FavoritesScreen;
 
 const styles = StyleSheet.create({
-  favItem: { padding: 5 },
+  favItem: {
+    backgroundColor: Colors.LIGHT_TEAL,
+    borderBottomColor: Colors.DARK_PURPLE,
+    borderBottomWidth: 1,
+    marginHorizontal: 20,
+    padding: 8,
+  },
+  itemFirst: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  itemLast: {
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderBottomWidth: 0,
+  },
+  itemText: {
+    textAlign: 'left',
+    fontSize: 20,
+    fontFamily: 'McLaren',
+    color: Colors.DARK_PURPLE,
+  },
+  headerText: {
+    fontSize: 25,
+    // fontFamily: 'Amatic_Bold',
+    color: Colors.LIGHT_CYAN,
+  },
+  sectionHeader: {
+    marginHorizontal: 30,
+    marginTop: 25,
+  },
 });
