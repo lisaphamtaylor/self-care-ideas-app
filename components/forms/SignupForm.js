@@ -28,16 +28,18 @@ const SignupForm = ({ navigation }) => {
 
   const onSignup = async (email, password, username) => {
     const auth = getAuth();
+    // const welcomeMessage = `Welcome, ${username}!`;
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        Alert.alert('Successful sign up!', [
-          {
-            text: 'Welcome',
-            onPress: () => navigation.navigate('Home'),
-          },
-        ]);
+        navigation.navigate('Home');
+        // Alert.alert('Successful sign up!', [
+        //   {
+        //     text: 'Welcome',
+        //     onPress: () => navigation.navigate('Home'),
+        //   },
+        // ]);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -70,6 +72,7 @@ const SignupForm = ({ navigation }) => {
           values,
           isValid,
           errors,
+          touched,
         }) => (
           <View>
             <View
@@ -96,9 +99,9 @@ const SignupForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {errors.email && (
+            {errors.email && touched.email ? (
               <Text style={globalStyles.errorText}>{errors.email}</Text>
-            )}
+            ) : null}
 
             <View
               style={[
@@ -123,6 +126,9 @@ const SignupForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
+            {errors.username && touched.username ? (
+              <Text style={globalStyles.errorText}>{errors.username}</Text>
+            ) : null}
 
             <View
               style={[
@@ -148,9 +154,9 @@ const SignupForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {errors.password && (
+            {errors.password && touched.password ? (
               <Text style={globalStyles.errorText}>{errors.password}</Text>
-            )}
+            ) : null}
 
             <Pressable
               style={globalStyles.registrationButton(isValid)}

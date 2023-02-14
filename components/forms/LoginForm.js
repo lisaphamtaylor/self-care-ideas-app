@@ -62,6 +62,7 @@ const LoginForm = ({ navigation }) => {
           values,
           isValid,
           errors,
+          touched,
         }) => (
           <View>
             <View
@@ -77,7 +78,7 @@ const LoginForm = ({ navigation }) => {
             >
               <TextInput
                 placeholderTextColor='grey'
-                placeholder='Username or email'
+                placeholder='Email'
                 autoCapitalize='none'
                 keyboardType='email-address'
                 textContentType='emailAddress'
@@ -88,9 +89,9 @@ const LoginForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {errors.email && (
+            {errors.email && touched.email ? (
               <Text style={globalStyles.errorText}>{errors.email}</Text>
-            )}
+            ) : null}
 
             <View
               style={[
@@ -116,9 +117,9 @@ const LoginForm = ({ navigation }) => {
                 style={globalStyles.input}
               />
             </View>
-            {/* {errors.password && (
+            {errors.password && touched.password ? (
               <Text style={globalStyles.errorText}>{errors.password}</Text>
-            )} */}
+            ) : null}
             <TouchableOpacity style={styles.forgotButton}>
               <Text style={globalStyles.forgotText}>Forgot password?</Text>
             </TouchableOpacity>

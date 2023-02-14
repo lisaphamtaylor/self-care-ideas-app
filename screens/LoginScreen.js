@@ -1,7 +1,6 @@
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import React from 'react';
 import { globalStyles } from '../styles/Global';
-import Colors from '../styles/Color';
 import LoginForm from '../components/forms/LoginForm';
 
 const LoginScreen = ({ navigation }) => {
