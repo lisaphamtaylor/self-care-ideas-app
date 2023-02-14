@@ -1,5 +1,4 @@
 import {
-  FlatList,
   SafeAreaView,
   SectionList,
   StyleSheet,
@@ -9,7 +8,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { globalStyles } from '../styles/Global';
 import { collection, getDocs, query } from 'firebase/firestore';
-import { currentDate, uid } from './FilterScreen';
+import { uid } from './FilterScreen';
 import { db } from '../firebase';
 import Footer from '../components/Footer';
 import Colors from '../styles/Color';
@@ -24,6 +23,7 @@ const FavoritesScreen = ({ navigation }) => {
           const newData = querySnapshot.docs.map((doc) => ({
             data: doc.data().favorites,
             id: doc.id,
+            mood: doc.data().mood,
           }));
           setFavorites(newData);
         }
@@ -36,39 +36,37 @@ const FavoritesScreen = ({ navigation }) => {
     console.log('No such document!');
   }
 
+  function renderItem({ item, index, section }) {
+    return (
+      <View
+        style={[
+          styles.favItem,
+          index === 0 && styles.itemFirst,
+          index === section.data.length - 1 && styles.itemLast,
+        ]}
+      >
+        <Text style={styles.itemText}>{item}</Text>
+      </View>
+    );
+  }
+
+  function renderSectionHeader({ section: { id, mood } }) {
+    return (
+      <View style={styles.sectionHeader}>
+        <Text style={styles.headerText}>
+          {id} Mood: {mood}
+        </Text>
+      </View>
+    );
+  }
+
+  console.log(favorites);
   return (
     <SafeAreaView style={globalStyles.container}>
-      {/* <FlatList
-        data={favorites}
-        renderItem={({ item }) =>
-          item.favorites?.map((idea, i) => (
-            <View style={styles.favItem}>
-              <Text key={i} style={globalStyles.registrationButtonText}>
-                {idea}
-              </Text>
-            </View>
-          ))
-        }
-        style={globalStyles.titleText}
-      /> */}
       <SectionList
         sections={favorites}
-        renderItem={({ item, index, section }) => (
-          <View
-            style={[
-              styles.favItem,
-              index === 0 && styles.itemFirst,
-              index === section.data.length - 1 && styles.itemLast,
-            ]}
-          >
-            <Text style={styles.itemText}>{item}</Text>
-          </View>
-        )}
-        renderSectionHeader={({ section: { id } }) => (
-          <View style={styles.sectionHeader}>
-            <Text style={styles.headerText}>{id}</Text>
-          </View>
-        )}
+        renderItem={renderItem}
+        renderSectionHeader={renderSectionHeader}
         stickySectionHeadersEnabled={false}
       />
       <Footer navigation={navigation} />
@@ -87,12 +85,12 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   itemFirst: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   itemLast: {
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
     borderBottomWidth: 0,
   },
   itemText: {
