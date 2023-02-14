@@ -24,6 +24,7 @@ const FavoritesScreen = ({ navigation }) => {
             data: doc.data().favorites,
             id: doc.id,
             mood: doc.data().mood,
+            journalEntry: doc.data().journalEntry,
           }));
           setFavorites(newData);
         }
@@ -64,12 +65,15 @@ const FavoritesScreen = ({ navigation }) => {
     }
   }
 
-  function renderSectionHeader({ section: { id, mood } }) {
+  function renderSectionHeader({ section: { id, mood, journalEntry } }) {
     return (
       <View style={styles.sectionHeader}>
         <Text style={styles.headerText}>{id}</Text>
         {mood ? (
           <Text style={styles.moodText}>mood: {moodTranslate(mood)}</Text>
+        ) : null}
+        {journalEntry ? (
+          <Text style={styles.moodText}>{journalEntry}</Text>
         ) : null}
       </View>
     );
