@@ -50,11 +50,27 @@ const FavoritesScreen = ({ navigation }) => {
     );
   }
 
+  function moodTranslate(mood) {
+    if (mood === 1) {
+      return '😭';
+    } else if (mood === 2) {
+      return '🙁';
+    } else if (mood === 3) {
+      return '😐';
+    } else if (mood === 4) {
+      return '🙂';
+    } else if (mood === 5) {
+      return '😄';
+    }
+  }
+
   function renderSectionHeader({ section: { id, mood } }) {
     return (
       <View style={styles.sectionHeader}>
         <Text style={styles.headerText}>{id}</Text>
-        {mood ? <Text style={styles.moodText}>mood: {mood}</Text> : null}
+        {mood ? (
+          <Text style={styles.moodText}>mood: {moodTranslate(mood)}</Text>
+        ) : null}
       </View>
     );
   }
@@ -97,6 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'McLaren',
     color: Colors.DARK_PURPLE,
+    marginHorizontal: 10,
   },
   headerText: {
     fontSize: 25,

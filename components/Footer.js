@@ -49,17 +49,18 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity onPress={pressHome}>
           <Ionicons name='home-sharp' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={pressFavorites}>
-          <Ionicons name='heart' size={iconSize} style={styles.icon} />
-        </TouchableOpacity>
         <TouchableOpacity onPress={pressMood}>
           {/* <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} /> */}
           <AntDesign
             name='smile-circle'
-            size={iconSize - 2}
-            style={styles.icon}
+            size={iconSize - 3}
+            style={[styles.icon, { marginTop: 2 }]}
           />
         </TouchableOpacity>
+        <TouchableOpacity onPress={pressFavorites}>
+          <Ionicons name='heart' size={iconSize} style={styles.icon} />
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={pressProfile}>
           <Ionicons name='person' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
