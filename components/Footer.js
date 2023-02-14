@@ -43,14 +43,13 @@ const Footer = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <View>
       <Divider width={1} orientation='vertical' />
       <View style={styles.container}>
         <TouchableOpacity onPress={pressHome}>
           <Ionicons name='home-sharp' size={iconSize} style={styles.icon} />
         </TouchableOpacity>
         <TouchableOpacity onPress={pressMood}>
-          {/* <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} /> */}
           <AntDesign
             name='smile-circle'
             size={iconSize - 3}
@@ -58,7 +57,8 @@ const Footer = ({ navigation }) => {
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={pressFavorites}>
-          <Ionicons name='heart' size={iconSize} style={styles.icon} />
+          <Ionicons name='ios-calendar' size={iconSize} style={styles.icon} />
+          {/* <Ionicons name='heart' size={iconSize} style={styles.icon} /> */}
         </TouchableOpacity>
 
         <TouchableOpacity onPress={pressProfile}>
@@ -80,13 +80,5 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: Colors.LIGHT_CYAN,
-  },
-  wrapper: {
-    // alignContent: 'center',
-    // position: 'absolute',
-    // width: '100%',
-    // bottom: '3%',
-    // zindex: 999,
-    // backgroundColor: '#095E71',
   },
 });

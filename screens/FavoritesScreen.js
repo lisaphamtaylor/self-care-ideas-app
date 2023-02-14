@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
   },
   moodText: {
     fontSize: 23,
-    fontStyle: 'italic',
     color: Colors.LIGHT_CYAN,
     marginLeft: 15,
   },

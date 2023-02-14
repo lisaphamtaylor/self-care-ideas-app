@@ -29,8 +29,10 @@ export default function MoodScreen({ navigation }) {
   const press5 = () => updateMood(5);
 
   return (
-    <SafeAreaView style={globalStyles.container}>
-      <Text style={[globalStyles.titleText, { fontSize: 31 }]}>
+    <SafeAreaView
+      style={[globalStyles.container, { justifyContent: 'flex-start' }]}
+    >
+      <Text style={[globalStyles.titleText, { fontSize: 31, marginTop: 50 }]}>
         How are you feeling today?
       </Text>
 
@@ -56,8 +58,9 @@ export default function MoodScreen({ navigation }) {
           <Text style={styles.icon}>&#x1F604;</Text>
         </TouchableOpacity>
       </View>
-
-      <Footer navigation={navigation} />
+      <View style={styles.footer}>
+        <Footer navigation={navigation} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -70,4 +73,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   icon: { fontSize: 40 },
+  footer: {
+    alignSelf: 'center',
+    position: 'absolute',
+    width: '100%',
+    bottom: '5%',
+    zindex: 999,
+    // backgroundColor: '#095E71',
+  },
 });

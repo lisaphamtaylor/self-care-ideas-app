@@ -59,7 +59,7 @@ export default function App() {
         <Stack.Screen
           name='Favorites'
           component={FavoritesScreen}
-          options={{ title: 'Favorites Log' }}
+          options={{ title: 'User Log' }}
         />
         <Stack.Screen
           name='Mood'
