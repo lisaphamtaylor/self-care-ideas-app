@@ -6,7 +6,6 @@ import { useFonts } from 'expo-font';
 // importing screens for App
 import FilterScreen from './screens/FilterScreen';
 import SuggestionScreen from './screens/SuggestionScreen';
-import SignedInStack from './screens/Navigation';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import FavoritesScreen from './screens/FavoritesScreen';

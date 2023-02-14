@@ -1,14 +1,17 @@
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { globalStyles } from '../styles/Global';
-import CategoryButton from '../components/CategoryButton';
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from '../firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
 import Footer from '../components/Footer';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { currentDate, uid } from './FilterScreen';
 
 export default function MoodScreen({ navigation }) {
@@ -16,7 +19,7 @@ export default function MoodScreen({ navigation }) {
 
   const updateMood = (number) => {
     updateDoc(journalRef, { mood: number });
-    console.log('mood updated to ' + number);
+    // console.log('mood updated to ' + number);
   };
 
   const press1 = () => updateMood(1);
