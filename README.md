@@ -1,7 +1,6 @@
 # Soothe - a mental health mobile application
 
 ## Table of Contents
-
 - [Soothe - a mental health mobile application](#soothe---a-mental-health-mobile-application)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
@@ -33,8 +32,8 @@ Users can also record daily mood and journal entries as well as pull up historic
 - Favorite self care ideas
 
 ## Screenshots
-!(assets/screenshots/Screenshot_1676516150.png)
-!(assets/screenshots/IMG_0309.png)
+!(/assets/screenshots/Screenshot_1676516150.png)
+!(/assets/screenshots/IMG_0309.png)
 
 ## Roadmap
 
