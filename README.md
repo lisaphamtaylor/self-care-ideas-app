@@ -12,7 +12,7 @@
 
 Lisa Pham Taylor's Capstone Project for Ada Developers' Academy Digital Cohort 18.
 
-A React Native mobile app for Android and iOS that is connected to a Google Firebase backend for user authetication and data. 
+Soothe is a React Native mobile app for Android and iOS that is connected to a Google Firebase backend for user authentication and data storage. 
 
 Users can sign in with an email and password login authentication. After a prompt, they will be presented cards with different self-care idea suggestions that can be swiped to the right or left of the screen.
 
