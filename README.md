@@ -1,12 +1,6 @@
 # Soothe - a mental health mobile application
 
 ## Table of Contents
-<!--
-- [Soothe - a mental health mobile application](#soothe---a-mental-health-mobile-application)
-  - [Table of Contents](#table-of-contents)
-  -->
-- [Soothe - a mental health mobile application](#soothe---a-mental-health-mobile-application)
-  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Project Status](#project-status)
   - [Features](#features)
