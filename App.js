@@ -30,8 +30,6 @@ export default function App() {
   }
 
   return (
-    // <SignedInStack />
-
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen

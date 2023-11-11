@@ -2,10 +2,14 @@
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Project Status](#project-status)
-- [Features](#features)
-- [Roadmap](#roadmap)
+- [Soothe - a mental health mobile application](#soothe---a-mental-health-mobile-application)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Project Status](#project-status)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+  - [Roadmap](#roadmap)
+  - [License](#license)
 
 
 ## Introduction
@@ -27,6 +31,10 @@ Users can also record daily mood and journal entries as well as pull up historic
 - Mood tracker
 - Journal log
 - Favorite self care ideas
+
+## Screenshots
+assets/screenshots/Screenshot_1676516150.png
+assets/screenshots/IMG_0309.png
 
 ## Roadmap
 
