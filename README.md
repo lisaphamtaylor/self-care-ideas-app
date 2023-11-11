@@ -1,5 +1,4 @@
-# Soothe
-a mental health mobile application
+# Soothe - a mental health mobile application
 
 ## Table of Contents
 
