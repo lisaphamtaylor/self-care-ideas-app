@@ -55,7 +55,7 @@ Users can record their mood and journal entries for the day. They can also pull 
 </p>
 
 
-## Roadmap
+## Optimizations
 
 - Reformat history page into calendar format 
 - Graph analytics on moods, liked suggestions
